@@ -3,7 +3,6 @@ import torch.nn as nn
 from . import odeint
 from .misc import _flatten, _flatten_convert_none_to_zeros
 
-
 class OdeintAdjointMethod(torch.autograd.Function):
 
     @staticmethod
@@ -21,7 +20,8 @@ class OdeintAdjointMethod(torch.autograd.Function):
 
     @staticmethod
     def backward(ctx, *grad_output):
-
+        # print("23333")
+        # import pdb; pdb.set_trace()
         t, flat_params, *ans = ctx.saved_tensors
         ans = tuple(ans)
         func, rtol, atol, method, options = ctx.func, ctx.rtol, ctx.atol, ctx.method, ctx.options
